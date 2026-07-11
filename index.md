@@ -11,10 +11,10 @@ hero:
       link: /manuscript/book-01-awakening/unit-01-set-theory/chapter-001
 
 features:
-  - title: 第一卷 · 觉醒
-    details: 单元一「集合论」——从回声书屋的一行怪异笔迹，到无穷的世界。
-  - title: 数学即超能力
-    details: 公理、悖论、可数与不可数……抽象概念在故事里被视觉化、直觉化。
-  - title: 持续更新
-    details: 新章节写完即上线，阅读进度随卷、随单元逐步展开。
+  - title: 单元一 · 集合论
+    details: 从回声书屋的一行怪异笔迹，到无穷的世界——公理、悖论、可数与不可数。
+  - title: 单元二 · 数论
+    details: 天文台里的原子分解与循环长度，直抵非平凡零点的裂缝。
+  - title: 单元三 · 几何
+    details: 镜廊入口与椭圆镜厅，千年的挣扎在光线中展开。
 ---
