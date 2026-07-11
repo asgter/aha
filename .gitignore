@@ -11,3 +11,6 @@ Thumbs.db
 
 # 幕后设计材料（大纲/研究笔记/series-bible/执行计划），不公开
 docs/
+
+# 工作流脚手架，不公开
+.workflow_artifacts/
