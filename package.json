@@ -1,0 +1,15 @@
+{
+  "name": "math-world-novel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "数学认知世界 —— 静态小说站点（VitePress）",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}
