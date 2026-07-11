@@ -2,53 +2,42 @@
 
 一个以数学思维为超能力体系的类地球长篇系列小说。
 
-## 当前阶段
-- 设计文档已完成
-- 写作执行计划已完成
-- 正在进行：系列圣经 + 单元 1 细纲 + 前三章初稿
+## 当前进度
 
-## 关键文件
-| 文件 | 用途 |
-|------|------|
-| docs/superpowers/specs/2026-07-12-mathematical-cognition-novel-design.md | 系列设计总蓝图 |
-| docs/superpowers/plans/2026-07-12-novel-writing-execution-plan.md | 写作执行计划 |
-| docs/novel/series-bible.md | 主角、世界观、境界速查 |
-| docs/novel/unit-outlines/ | 每个单元的章节细纲 |
-| docs/novel/research-notes/ | 每个数学分支的研究笔记 |
-| manuscript/ | 正文手稿 |
-| .vitepress/config.mjs | 网站配置（侧边栏按章节自动生成） |
-| .github/workflows/deploy.yml | 推送到 main 自动部署到 GitHub Pages |
+- **第一卷 · 觉醒**：8 个单元、30 章初稿已完成（第 1–30 章）
+- 涵盖：集合论 → 数论 → 几何 → 代数 → 伽罗瓦理论 → 线性代数 → 矩阵分析 → 李群
+- 阶段：初稿完成，待修订
+
+## 目录
+
+| 单元 | 章节 | 核心数学 |
+|------|------|---------|
+| 单元一 · 集合论 | 第 1–9 章 | 公理、悖论、可数与不可数 |
+| 单元二 · 数论 | 第 10–15 章 | 质数、模运算、黎曼 ζ |
+| 单元三 · 几何 | 第 16–21 章 | 非欧几何、椭圆曲线 |
+| 单元四 · 代数 | 第 22–24 章 | 群、环、域 |
+| 单元五 · 伽罗瓦理论 | 第 25–27 章 | 对称性与方程可解性 |
+| 单元六 · 线性代数 | 第 28 章 | 向量空间、线性变换 |
+| 单元七 · 矩阵分析 | 第 29 章 | 谱分解、奇异值 |
+| 单元八 · 李群 | 第 30 章 | 连续对称与无穷小变换 |
 
 ## 网站（VitePress 静态站点）
-用 Markdown 写作，构建时生成 HTML，零数据库、零后端。
+
+用 Markdown 写作，构建时生成 HTML。
 
 ```bash
-npm install          # 首次安装依赖
+npm install          # 安装依赖
 npm run docs:dev     # 本地预览（http://localhost:5173）
-npm run docs:build   # 生成静态站点到 .vitepress/dist/
+npm run docs:build   # 生成静态站点
 ```
 
-- 首页在根目录 `index.md`；正文直接读取 `manuscript/` 下的章节。
-- 新增 `chapter-NNN.md` 后侧边栏自动更新，无需改配置。
-- `docs/` 内部设计文档不会发布到网站（已在 srcExclude 排除）。
-- 推送到 GitHub `main` 分支后，Actions 会自动构建并部署（需在仓库 Settings → Pages 中把 Source 设为 GitHub Actions）。
+- 首页 `index.md`；正文在 `manuscript/` 下
+- 新增章节后侧边栏自动更新，无需改配置
+- 推送到 `main` 分支后 GitHub Actions 自动部署
 
 ## 写作原则
+
 1. 每章必须有一个"啊哈"时刻
 2. 数学概念必须视觉化、直觉化
 3. 单元相对独立，跨单元线索逐步释放
 4. 先求写完，再求写好
-
-## 写作进度
-
-### 第一卷：觉醒
-- [x] 项目结构搭建
-- [x] 系列设计文档
-- [x] 写作执行计划
-- [ ] 系列圣经
-- [ ] 单元 1 研究笔记
-- [ ] 单元 1 章节细纲
-- [ ] 单元 1 前三章初稿
-- [ ] 单元 1 前三章修订
-- [ ] 单元 1 完成
-- [ ] 单元 2 启动

@@ -13,6 +13,11 @@ const UNIT_NAMES = {
   'unit-01-set-theory': '单元一 · 集合论',
   'unit-02-number-theory': '单元二 · 数论',
   'unit-03-geometry': '单元三 · 几何',
+  'unit-04-algebra': '单元四 · 代数',
+  'unit-05-galois': '单元五 · 伽罗瓦理论',
+  'unit-06-linear-algebra': '单元六 · 线性代数',
+  'unit-07-matrix-analysis': '单元七 · 矩阵分析',
+  'unit-08-lie-groups': '单元八 · 李群',
 }
 
 const cn = (map, key) => map[key] || key
@@ -79,7 +84,9 @@ export default defineConfig({
   title: '数学认知世界',
   description: '一个以数学思维为超能力体系的类地球长篇系列小说。',
   lang: 'zh-CN',
-  base: '/aha/', // 仓库名为 aha，站点部署在 https://asgter.github.io/aha/
+  // Cloudflare Pages 用根域名（xxx.pages.dev / 自定义域），base 为 '/'
+  // GitHub Pages 用子路径，base 为 '/aha/'
+  base: process.env.CF_PAGES ? '/' : '/aha/',
   cleanUrls: true,
   lastUpdated: true,
 
