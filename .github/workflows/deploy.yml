@@ -30,6 +30,8 @@ jobs:
       - name: Build with VitePress
         run: npm run docs:build
       - uses: actions/configure-pages@v4
+        with:
+          enablement: true # 若仓库尚未启用 Pages，自动通过 API 启用
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
