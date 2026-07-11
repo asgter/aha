@@ -3,7 +3,19 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 const ROOT = path.resolve(process.cwd())
-const UNIT_DIR = 'manuscript/book-01-awakening/unit-01-set-theory'
+const MANUSCRIPT = 'manuscript'
+
+// 卷 / 单元目录名 → 中文显示名（缺省则用目录名兜底）
+const BOOK_NAMES = {
+  'book-01-awakening': '第一卷：觉醒',
+}
+const UNIT_NAMES = {
+  'unit-01-set-theory': '单元一 · 集合论',
+  'unit-02-number-theory': '单元二 · 数论',
+  'unit-03-geometry': '单元三 · 几何',
+}
+
+const cn = (map, key) => map[key] || key
 
 // 从章节文件里读取第一行 `# 标题` 作为侧边栏文字
 function readTitle(absPath, fallback) {
@@ -14,9 +26,19 @@ function readTitle(absPath, fallback) {
   return fallback
 }
 
+// 只列出直接子目录（已排序）
+function subdirs(absDir) {
+  if (!fs.existsSync(absDir)) return []
+  return fs
+    .readdirSync(absDir, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name)
+    .sort()
+}
+
 // 扫描单元目录，自动生成章节列表（新增章节无需改配置）
-function chapterItems(unitDir) {
-  const abs = path.join(ROOT, unitDir)
+function chapterItems(unitRel) {
+  const abs = path.join(ROOT, unitRel)
   if (!fs.existsSync(abs)) return []
   return fs
     .readdirSync(abs)
@@ -24,8 +46,33 @@ function chapterItems(unitDir) {
     .sort()
     .map((f) => ({
       text: readTitle(path.join(abs, f), f.replace('.md', '')),
-      link: `/${unitDir}/${f.replace(/\.md$/, '')}`,
+      link: `/${unitRel}/${f.replace(/\.md$/, '')}`,
     }))
+}
+
+// 扫描全部卷与单元，自动生成完整侧边栏
+function buildSidebar() {
+  const manuscriptAbs = path.join(ROOT, MANUSCRIPT)
+  return subdirs(manuscriptAbs).map((book) => ({
+    text: cn(BOOK_NAMES, book),
+    items: subdirs(path.join(manuscriptAbs, book)).map((unit) => ({
+      text: cn(UNIT_NAMES, unit),
+      collapsed: false,
+      items: chapterItems(`${MANUSCRIPT}/${book}/${unit}`),
+    })),
+  }))
+}
+
+// 找到全书第一章，作为"开始阅读"入口
+function firstChapterLink() {
+  const manuscriptAbs = path.join(ROOT, MANUSCRIPT)
+  for (const book of subdirs(manuscriptAbs)) {
+    for (const unit of subdirs(path.join(manuscriptAbs, book))) {
+      const items = chapterItems(`${MANUSCRIPT}/${book}/${unit}`)
+      if (items.length) return items[0].link
+    }
+  }
+  return '/'
 }
 
 export default defineConfig({
@@ -42,21 +89,10 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '开始阅读', link: `/${UNIT_DIR}/chapter-001` },
+      { text: '开始阅读', link: firstChapterLink() },
     ],
     sidebar: {
-      '/manuscript/': [
-        {
-          text: '第一卷：觉醒',
-          items: [
-            {
-              text: '单元一 · 集合论',
-              collapsed: false,
-              items: chapterItems(UNIT_DIR),
-            },
-          ],
-        },
-      ],
+      '/manuscript/': buildSidebar(),
     },
     outline: { label: '本章导航', level: [2, 3] },
     docFooter: { prev: '上一章', next: '下一章' },
