@@ -32,6 +32,7 @@ export default defineConfig({
   title: '数学认知世界',
   description: '一个以数学思维为超能力体系的类地球长篇系列小说。',
   lang: 'zh-CN',
+  base: '/aha/', // 仓库名为 aha，站点部署在 https://asgter.github.io/aha/
   cleanUrls: true,
   lastUpdated: true,
 
