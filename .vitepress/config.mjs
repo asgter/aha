@@ -8,6 +8,7 @@ const MANUSCRIPT = 'manuscript'
 // 卷 / 单元目录名 → 中文显示名（缺省则用目录名兜底）
 const BOOK_NAMES = {
   'book-01-awakening': '第一卷：觉醒',
+  'book-02-exploration': '第二卷：深渊',
 }
 const UNIT_NAMES = {
   'unit-01-set-theory': '单元一 · 集合论',
@@ -18,6 +19,8 @@ const UNIT_NAMES = {
   'unit-06-linear-algebra': '单元六 · 线性代数',
   'unit-07-matrix-analysis': '单元七 · 矩阵分析',
   'unit-08-lie-groups': '单元八 · 李群',
+  'unit-09-real-analysis': '单元九 · 实变函数',
+  'unit-10-complex-analysis': '单元十 · 复变函数',
 }
 
 const cn = (map, key) => map[key] || key
