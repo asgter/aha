@@ -8,6 +8,7 @@ node_modules/
 # 系统与编辑器
 .DS_Store
 Thumbs.db
+.claude/
 
 # 幕后设计材料（大纲/研究笔记/series-bible/执行计划），不公开
 docs/
