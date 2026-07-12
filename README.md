@@ -33,7 +33,12 @@ npm run docs:build   # 生成静态站点
 
 - 首页 `index.md`；正文在 `manuscript/` 下
 - 新增章节后侧边栏自动更新，无需改配置
-- 推送到 `main` 分支后 GitHub Actions 自动部署
+- 推送到 Gitee `main` 分支后，腾讯 EdgeOne Pages 自动构建部署（国内可访问）
+
+### 在线阅读
+
+- 线上地址：<!-- TODO: 填入 EdgeOne 访问地址，如 https://xxx.edgeone.app -->
+- 仓库：https://gitee.com/asgter/math-world
 
 ## 写作进度
 
