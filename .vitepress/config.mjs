@@ -88,9 +88,10 @@ export default defineConfig({
   description: '一个以数学思维为超能力体系的类地球长篇系列小说。',
   lang: 'zh-CN',
   // Cloudflare Pages 用根域名（xxx.pages.dev / 自定义域），base 为 '/'
-  // GitHub Pages 用子路径，base 为 '/aha/'
-  base: process.env.CF_PAGES ? '/' : '/aha/',
-  cleanUrls: true,
+  // Gitee Pages 用子路径，访问地址 https://asgter.gitee.io/math-world/
+  base: process.env.CF_PAGES ? '/' : '/math-world/',
+  // Gitee Pages 是纯静态托管，不支持 URL 重写，关闭 cleanUrls 以生成 .html 后缀
+  cleanUrls: false,
   lastUpdated: true,
 
   // 排除内部设计文档与说明，不发布到网站
