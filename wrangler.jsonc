@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aha",
+  "compatibility_date": "2026-07-12",
+  "assets": {
+    "directory": ".vitepress/dist"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
